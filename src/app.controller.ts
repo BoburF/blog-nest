@@ -1,12 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
+import { Telegraf, Context } from 'telegraf';
+import { InjectBot } from 'nestjs-telegraf';
 import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(@InjectBot() private readonly bot: Telegraf<Context>) {}
 
   @Get()
   getHello(): string {
-    return this.appService.getHello();
+    return ""
   }
 }
